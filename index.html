@@ -1,0 +1,69 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>生成</title>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+$(function () {
+	$("#button").click(function(){
+		if($("#from").val()==""||$("#to").val()==""||$("#words").val()=="") {
+			alert("请完整输入内容！");
+			return;
+		}
+    sessionStorage.clear();
+		// alert("页面已经生成，你可以将网址发送给别人了！");
+		var from = escape($("#from").val());
+		var to = escape($("#to").val());
+		var words= escape($("#words").val());
+    sessionStorage.setItem('from',JSON.stringify(from));
+    sessionStorage.setItem('to',JSON.stringify(to));
+    sessionStorage.setItem('words',JSON.stringify(words));
+    var t1=$("#select").val()
+    if(t1=='make'){
+      location.href='first.html';
+    }else {
+      location.href='second.html';
+    }
+		// location.href=$("#select").val()+".html?from="+from+"&to="+to+"&words="+words;
+	});
+});
+</script>
+</head>
+
+<body>
+<table width="200" border="0" align="center">
+  <tr>
+    <td width="81">from</td>
+    <td width="103" align="center">
+    <input name="from" type="text" id="from" size="12"></td>
+  </tr>
+  <tr>
+    <td>to</td>
+       <td width="103" align="center">
+    <input name="to" type="text" id="to" size="12"></td>
+  </tr>
+  <tr>
+    <td>留言</td>
+       <td width="103" align="center">
+    <input name="words" type="text" id="words" value="祝你永远幸福快乐。" size="12"></td>
+  </tr>
+  <tr>
+  <td>诗集</td>
+    <td colspan="2" style="text-align: center">
+     
+      <select name="select" id="select">
+        <option value="make">孤独的根号3</option>
+        <option value="make2">程序员表白</option>
+    </select></td>
+    
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center">留言不要太长哦</td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center"><input type="button" name="button" id="button" value="提交"></td>
+  </tr>
+</table>
+</body>
+</html>
